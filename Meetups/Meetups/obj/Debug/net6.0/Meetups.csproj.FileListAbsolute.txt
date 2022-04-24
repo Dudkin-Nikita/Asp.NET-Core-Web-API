@@ -25,3 +25,11 @@ C:\Users\user\Documents\Modsen\Meetups\Meetups\obj\Debug\net6.0\refint\Meetups.d
 C:\Users\user\Documents\Modsen\Meetups\Meetups\obj\Debug\net6.0\Meetups.pdb
 C:\Users\user\Documents\Modsen\Meetups\Meetups\obj\Debug\net6.0\Meetups.genruntimeconfig.cache
 C:\Users\user\Documents\Modsen\Meetups\Meetups\obj\Debug\net6.0\ref\Meetups.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Humanizer.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Npgsql.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
