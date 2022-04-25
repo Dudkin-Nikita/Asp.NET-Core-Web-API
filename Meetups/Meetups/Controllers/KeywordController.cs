@@ -18,7 +18,7 @@ namespace Meetups.Controllers
             this.context = context;
         }
 
-        [HttpPost("{meetupId}/{tagId}")]
+        [HttpPost("assigntag/{meetupId}/{keywordId}")]
         public async Task<ActionResult> AssignTag(int meetupId, int keywordId)
         {
             var meetup = await context.Meetups.FindAsync(meetupId);
@@ -51,7 +51,7 @@ namespace Meetups.Controllers
             return Ok(await context.Keywords.ToListAsync());
         }
 
-        [HttpGet("{meetupId}")]
+        [HttpGet("getMeetupKeywords/{meetupId}")]
         public async Task<ActionResult<List<CreatedKeyword>>> GetMeetupKeywords(int meetupId)
         {
             var meetup = await context.Meetups.FindAsync(meetupId);

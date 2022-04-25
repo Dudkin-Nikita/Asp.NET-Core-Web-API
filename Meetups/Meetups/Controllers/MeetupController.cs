@@ -1,6 +1,7 @@
 ﻿using Meetups.Domain;
 using Meetups.Domain.Entities;
 using Meetups.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

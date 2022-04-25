@@ -1,4 +1,5 @@
 ﻿using Meetups.Domain.Entities;
+using Meetups.JWT;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meetups.Domain

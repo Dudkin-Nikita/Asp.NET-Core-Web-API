@@ -8,5 +8,7 @@
         public string Place { get; set; }
         public DateTime Date { get; set; }
         public ICollection<Keyword> Keywords { get; set; } = new List<Keyword>();
+        public string UserName { get; set; }
+
     }
 }

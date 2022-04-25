@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Meetups.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220424181200_Initial")]
+    [Migration("20220425190812_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,9 @@ namespace Meetups.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Place")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

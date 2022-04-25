@@ -32,7 +32,8 @@ namespace Meetups.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Place = table.Column<string>(type: "text", nullable: true),
-                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

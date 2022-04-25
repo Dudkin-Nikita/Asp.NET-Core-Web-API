@@ -73,6 +73,9 @@ namespace Meetups.Migrations
                     b.Property<string>("Place")
                         .HasColumnType("text");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Meetups");
