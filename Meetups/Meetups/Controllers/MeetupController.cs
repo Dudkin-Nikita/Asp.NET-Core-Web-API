@@ -23,17 +23,6 @@ namespace Meetups.Controllers
             return Ok(await context.Meetups.ToListAsync());
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Meetup>> Get(int id)
-        {
-            var meetup = await context.Meetups.FindAsync(id);
-            if (meetup == null)
-            {
-                return BadRequest("Meetup not found");
-            }
-            return Ok(meetup);
-        }
-
         [HttpPost]
         public async Task<ActionResult<List<Meetup>>> AddMeetup(CreatedMeetup createdMeetup)
         {
