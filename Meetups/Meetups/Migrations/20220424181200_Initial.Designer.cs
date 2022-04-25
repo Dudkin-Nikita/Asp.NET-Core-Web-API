@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Meetups.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220424170307_CreateInitial")]
-    partial class CreateInitial
+    [Migration("20220424181200_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,21 @@ namespace Meetups.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("KeywordMeetup", b =>
+                {
+                    b.Property<int>("KeywordsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MeetupsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("KeywordsId", "MeetupsId");
+
+                    b.HasIndex("MeetupsId");
+
+                    b.ToTable("KeywordMeetup");
+                });
+
             modelBuilder.Entity("Meetups.Domain.Entities.Keyword", b =>
                 {
                     b.Property<int>("Id")
@@ -32,15 +47,10 @@ namespace Meetups.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MeetupId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MeetupId");
 
                     b.ToTable("Keywords");
                 });
@@ -70,20 +80,19 @@ namespace Meetups.Migrations
                     b.ToTable("Meetups");
                 });
 
-            modelBuilder.Entity("Meetups.Domain.Entities.Keyword", b =>
+            modelBuilder.Entity("KeywordMeetup", b =>
                 {
-                    b.HasOne("Meetups.Domain.Entities.Meetup", "Meetup")
-                        .WithMany("Keywords")
-                        .HasForeignKey("MeetupId")
+                    b.HasOne("Meetups.Domain.Entities.Keyword", null)
+                        .WithMany()
+                        .HasForeignKey("KeywordsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Meetup");
-                });
-
-            modelBuilder.Entity("Meetups.Domain.Entities.Meetup", b =>
-                {
-                    b.Navigation("Keywords");
+                    b.HasOne("Meetups.Domain.Entities.Meetup", null)
+                        .WithMany()
+                        .HasForeignKey("MeetupsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

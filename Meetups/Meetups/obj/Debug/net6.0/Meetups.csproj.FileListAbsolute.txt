@@ -33,3 +33,5 @@ C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.Entity
 C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Npgsql.dll
 C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\user\Documents\Modsen\Meetups\Meetups\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

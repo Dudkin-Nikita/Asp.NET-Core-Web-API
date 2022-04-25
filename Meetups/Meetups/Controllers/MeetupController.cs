@@ -1,5 +1,6 @@
 ﻿using Meetups.Domain;
 using Meetups.Domain.Entities;
+using Meetups.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,15 +35,16 @@ namespace Meetups.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Meetup>>> AddHero(Meetup meetup)
+        public async Task<ActionResult<List<Meetup>>> AddMeetup(CreatedMeetup createdMeetup)
         {
+            Meetup meetup = new Meetup{ Id = createdMeetup.Id, Name = createdMeetup.Name, Description = createdMeetup.Description, Date = createdMeetup.Date, Place = createdMeetup.Place};
             context.Meetups.Add(meetup);
             await context.SaveChangesAsync();
             return Ok(await context.Meetups.ToListAsync());
         }
 
         [HttpPut]
-        public async Task<ActionResult<List<Meetup>>> UpdateMeetup(Meetup request)
+        public async Task<ActionResult<List<Meetup>>> UpdateMeetup(CreatedMeetup request)
         {
             var meetup = await context.Meetups.FindAsync(request.Id);
             if (meetup == null)
@@ -54,8 +56,6 @@ namespace Meetups.Controllers
             meetup.Place = request.Place;
             meetup.Date = request.Date;
 
-            //context.Entry(entity).State = EntityState.Modified;
-
             await context.SaveChangesAsync();
 
             return Ok(await context.Meetups.ToListAsync());
@@ -64,20 +64,17 @@ namespace Meetups.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Meetup>> Delete(int id)
         {
-            var hero = await context.Meetups.FindAsync(id);
-            if (hero == null)
+            var meetup = await context.Meetups.FindAsync(id);
+            if (meetup == null)
             {
                 return BadRequest("Meetup not found");
             }
 
-            context.Meetups.Remove(hero);
+            context.Meetups.Remove(meetup);
 
             await context.SaveChangesAsync();
 
             return Ok(await context.Meetups.ToListAsync());
         }
-
-
-
     }
 }

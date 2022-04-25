@@ -6,10 +6,23 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Meetups.Migrations
 {
-    public partial class CreateInitial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Keywords",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Keywords", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Meetups",
                 columns: table => new
@@ -27,33 +40,40 @@ namespace Meetups.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Keywords",
+                name: "KeywordMeetup",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    MeetupId = table.Column<int>(type: "integer", nullable: false)
+                    KeywordsId = table.Column<int>(type: "integer", nullable: false),
+                    MeetupsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Keywords", x => x.Id);
+                    table.PrimaryKey("PK_KeywordMeetup", x => new { x.KeywordsId, x.MeetupsId });
                     table.ForeignKey(
-                        name: "FK_Keywords_Meetups_MeetupId",
-                        column: x => x.MeetupId,
+                        name: "FK_KeywordMeetup_Keywords_KeywordsId",
+                        column: x => x.KeywordsId,
+                        principalTable: "Keywords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_KeywordMeetup_Meetups_MeetupsId",
+                        column: x => x.MeetupsId,
                         principalTable: "Meetups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Keywords_MeetupId",
-                table: "Keywords",
-                column: "MeetupId");
+                name: "IX_KeywordMeetup_MeetupsId",
+                table: "KeywordMeetup",
+                column: "MeetupsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "KeywordMeetup");
+
             migrationBuilder.DropTable(
                 name: "Keywords");
 

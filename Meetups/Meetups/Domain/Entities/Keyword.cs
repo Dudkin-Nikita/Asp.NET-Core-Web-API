@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int MeetupId { get; set; }
-        public Meetup Meetup { get; set; }
+        public ICollection<Meetup> Meetups { get; set; } = new List<Meetup>();
+
     }
 }
